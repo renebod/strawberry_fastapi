@@ -1,0 +1,10 @@
+fastapi
+pydantic
+strawberry-graphql[fastapi]
+couchdb
+uvicorn
+# python-jose[cryptography]
+# python-multipart
+# ldap3
+# requests
+pytz

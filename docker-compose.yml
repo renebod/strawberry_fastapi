@@ -10,13 +10,13 @@ services:
     ports:
       - 8080:80
 
-  # couchdb:
-  #   image: couchdb:latest
-  #   restart: always
-  #   ports:
-  #     - 5984:5984
-  #   environment:
-  #     - COUCHDB_USER=admin
-  #     - COUCHDB_PASSWORD=password
-  #   volumes:
-  #     - ./couchdb/data:/opt/couchdb/data
+  couchdb:
+    image: couchdb:latest
+    restart: always
+    ports:
+      - 5984:5984
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+    volumes:
+      - ./couchdb/data:/opt/couchdb/data

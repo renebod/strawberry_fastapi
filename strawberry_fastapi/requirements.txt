@@ -5,6 +5,7 @@ couchdb
 uvicorn
 # python-jose[cryptography]
 # python-multipart
-# ldap3
-# requests
+ldap3
+requests
+Jinja2
 pytz

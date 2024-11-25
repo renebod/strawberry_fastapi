@@ -1,7 +1,7 @@
 import strawberry
-
 from fastapi import FastAPI, Depends, Request, WebSocket, BackgroundTasks
 from strawberry.fastapi import GraphQLRouter
+from gql.schema import Query
 
 
 def custom_context_dependency() -> str:
@@ -15,15 +15,7 @@ async def get_context(
         "custom_value": custom_value,
     }
 
-
-@strawberry.type
-class Query:
-    @strawberry.field
-    def example(self, info: strawberry.Info) -> str:
-        return f"Hello {info.context['custom_value']}"
-
-
-schema = strawberry.Schema(Query)
+schema = strawberry.Schema(query=Query)
 
 graphql_app = GraphQLRouter(
     schema,

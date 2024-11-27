@@ -1,22 +1,40 @@
 services:
 
-  strawberry_fastapi:
-    build:
-      context: ./strawberry_fastapi
-    command: ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
-    # container_name: strawberry_graphql_fastapi.org
-    volumes:
-      - ./strawberry_fastapi:/code/app
-    ports:
-      - 8080:80
+  # strawberry_fastapi:
+  #   build:
+  #     context: ./strawberry_fastapi
+  #   # container_name: strawberry_graphql_fastapi.org
+  #   platform: linux/amd64
+  #   command: ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
+  #   volumes:
+  #     - ./strawberry_fastapi:/code/app
+  #   ports:
+  #     - 8080:80
+    # depends_on:
+    #   couchdb: 
+    #     condition: service_healthy
 
   couchdb:
     image: couchdb:latest
     restart: always
+    platform: linux/amd64
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - 5984:5984
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=password
+      - COUCHDB_HOSTNAME=couchdb
+      # Need to manuallyh create below DB's and do more things: https://github.com/apache/couchdb/issues/1354 and https://stackoverflow.com/questions/57660451/extending-couchdb-docker-image
+    command: ["sh", "-c", "for elem in _users _replicator _global_changes; do curl -X PUT http://admin:password@couchdb:5984/$elem;done "]
+    # healthcheck:
+    #   test: ["CMD", "curl", "-s http://couchdb:5984 >/dev/null 2>&1"]
+    #   interval: 1m30s
+    #   timeout: 30s
+    #   retries: 5
+    #   start_period: 30s
     volumes:
       - ./couchdb/data:/opt/couchdb/data
+
+# volumes:

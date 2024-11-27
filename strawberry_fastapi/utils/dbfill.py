@@ -14,7 +14,7 @@ couchserver = couchdb.Server(f"http://{username}:{password}@{dbhost}:{port}/")
 def get_database(db_name):
     return couchserver[db_name]
 
-databases = ['functional_objects', 'technical_objects', 'reference_objects']
+databases = ['functional_objects', 'technical_objects', 'reference_objects', 'reference_schema']
 
 for database in databases:
         if database in couchserver:
@@ -22,7 +22,7 @@ for database in databases:
         else:
             db = couchserver.create(database)
 
-ref_db = db.get_database('reference_objects')
+ref_db = get_database('reference_objects')
 
 for ref in [
         {'name': 'windows 11 server', 'ref_type': 'server_type'},

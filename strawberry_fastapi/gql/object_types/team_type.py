@@ -4,3 +4,7 @@ import strawberry
 class TeamType:
     key: str
     display_name: str
+@strawberry.type
+class TeamTypeDB:
+    key:str
+    name: str

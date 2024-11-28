@@ -1,7 +1,10 @@
 from ..object_types.server_type import ServerType
 from ..object_types.operating_system import OperatingSystem
-
+ 
 def resolve_server_types() -> list[ServerType]:
+    # name
+    # var ='win'
+    # mango = {'selector': {'ref_type':'server_type', 'name':{'$regex': f'.*{name}.*'}},'fields':['name']}
     return [
         ServerType(
             key="windows",

@@ -20,6 +20,7 @@ schema = strawberry.Schema(query=Query)
 graphql_app = GraphQLRouter(
     schema,
     context_getter=get_context,
+    debug=True
 )
 
 app = FastAPI()

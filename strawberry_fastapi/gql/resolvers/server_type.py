@@ -1,10 +1,12 @@
-from ..object_types.server_type import ServerType
+from ..object_types.server_type import ServerType, ServerTypeDB
 from ..object_types.operating_system import OperatingSystem
+from ..db import Couch
+
+# need to find common way to not open multiple connection to database
+couchserver = Couch()
+db = couchserver.get_database()
  
 def resolve_server_types() -> list[ServerType]:
-    # name
-    # var ='win'
-    # mango = {'selector': {'ref_type':'server_type', 'name':{'$regex': f'.*{name}.*'}},'fields':['name']}
     return [
         ServerType(
             key="windows",
@@ -29,3 +31,12 @@ def resolve_server_types() -> list[ServerType]:
             ],
         ),
     ]
+
+def resolve_server_types_db(name:str)-> list[ServerTypeDB]:
+    mango = {'selector': {'ref_type':'server_type', 'name':{'$regex': f'.*{name}.*'}},'fields':['name']}
+
+    result = db.find(mango_query=mango)
+    data =[]
+    for entry in result:
+        data.append(ServerTypeDB(key='', display_name=entry['name']))
+    return data 

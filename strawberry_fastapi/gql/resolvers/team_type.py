@@ -1,6 +1,5 @@
 from ..object_types.team_type import TeamType, TeamTypeDB
 from ..db import Couch
-from typing import Dict
 
 # need to find common way to not open multiple connection to database
 couchserver = Couch()
@@ -14,13 +13,10 @@ def resolve_team_type(key: str) -> TeamType:
     }
     return mock_teams.get(key, TeamType(key="unknown", display_name="Unknown Team"))
 
-def resolve_team_type_db(key: str) -> TeamTypeDB:
-    # Need better logic to have all data
+def resolve_team_type_db(key: str) -> list[TeamTypeDB]:
     mango = {'selector': {'ref_type':'team_type', 'key':{'$regex': f'.*{key}.*'}}}
-    result = db.find(mango_query=mango) # This is a map object
-
-    data ={'key':'', 'name':''}
+    result = db.find(mango_query=mango) 
+    data =[]
     for entry in result:
-        data["key"] =entry['key']
-        data["name"] = entry['name']
+        data.append(TeamTypeDB(key=entry['key'],name=entry['name']))
     return data

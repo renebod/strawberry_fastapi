@@ -51,10 +51,30 @@ def populate_ref_object_data(update:bool=False):
     else:
          print('Update DB')
          for ref in [
-              {'key':'dev', 'name': 'Development Team', 'ref_type':'team_type'},
-              {'key':'qa', 'name': 'QA Team', 'ref_type':'team_type'},
-              {'key':'ops', 'name': 'Operations Team', 'ref_type':'team_type'},
-              {'key':'business', 'name': 'Business Team', 'ref_type':'team_type'},
+            #   Update for team entries
+            #   {'key':'dev', 'name': 'Development Team', 'ref_type':'team_type'},
+            #   {'key':'qa', 'name': 'QA Team', 'ref_type':'team_type'},
+            #   {'key':'ops', 'name': 'Operations Team', 'ref_type':'team_type'},
+            #   {'key':'business', 'name': 'Business Team', 'ref_type':'team_type'},
+            # Update for nested entries
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
+            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            ]},
          ]:
               ref['_id'] = str(uuid4())
               ref_db.save(ref)

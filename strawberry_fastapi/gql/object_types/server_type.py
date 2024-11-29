@@ -11,4 +11,4 @@ class ServerType:
 class ServerTypeDB:
     key: str
     display_name: str
-    # operating_systems: List[OperatingSystemDB]
+    operating_systems: List[OperatingSystemDB]

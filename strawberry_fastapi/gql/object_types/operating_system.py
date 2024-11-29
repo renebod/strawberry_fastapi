@@ -10,3 +10,4 @@ class OperatingSystem:
 class OperatingSystemDB:
     key: str
     display_name: str
+    ref_type: str

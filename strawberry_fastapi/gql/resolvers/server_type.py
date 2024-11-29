@@ -38,5 +38,5 @@ def resolve_server_types_db(name:str)-> list[ServerTypeDB]:
     result = db.find(mango_query=mango)
     data =[]
     for entry in result:
-        data.append(ServerTypeDB(key='', display_name=entry['name']))
+        data.append(ServerTypeDB(key='', display_name=entry['dsiplay_name'],operating_systems=[OperatingSystem(key=entry["key"], display_name=entry["dsiplay_name"])]))
     return data 

@@ -51,29 +51,33 @@ def populate_ref_object_data(update:bool=False):
     else:
          print('Update DB')
          for ref in [
-            #   Update for team entries
+            #   Update for team entries simple
             #   {'key':'dev', 'name': 'Development Team', 'ref_type':'team_type'},
             #   {'key':'qa', 'name': 'QA Team', 'ref_type':'team_type'},
             #   {'key':'ops', 'name': 'Operations Team', 'ref_type':'team_type'},
             #   {'key':'business', 'name': 'Business Team', 'ref_type':'team_type'},
             # Update for nested entries
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'windows', 'dsiplay_name': 'Windows Server', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'windows-server-2012', 'display_name':'Windows Server 2012', 'ref_type': 'os_type'},
+                 {'key':'windows-server-2019', 'display_name':'Windows Server 2019', 'ref_type': 'os_type'}
             ]},
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'windows', 'dsiplay_name': 'Windows Server Core', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'windows-core-server-2023', 'display_name':'Windows Core Server 2023', 'ref_type': 'os_type'},
+                 {'key':'windows-core-server-2020', 'display_name':'Windows Core Server 2020', 'ref_type': 'os_type'}
             ]},
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'redhatlinux', 'dsiplay_name': 'Red Hat Linux', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'redhat-linux-enterprise-2022', 'display_name':'Red Hat Linux Enterprise 2022', 'ref_type': 'os_type'}
             ]},
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'redhatlinux', 'dsiplay_name': 'Red Hat Linux', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'redhat-linux-enterprise-2020', 'display_name':'Red Hat Linux Enterprise 2020', 'ref_type': 'os_type'},
+                 {'key':'redhat-linux-enterprise-2019', 'display_name':'Red Hat Linux Enterprise 2019', 'ref_type': 'os_type'}
             ]},
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'oraclelinux', 'dsiplay_name': 'Oracle Linux', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'oracle-linux-2023', 'display_name':'Oracle Linux 2023', 'ref_type': 'os_type'},
+                 {'key':'oracle-linux-2022', 'display_name':'Oracle Linux 2022', 'ref_type': 'os_type'}
             ]},
-            {'key': '', 'dsiplay_name': '', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'', 'display_name':'', 'ref_type': 'os_type'}
+            {'key': 'oraclelinux', 'dsiplay_name': 'Oracle Linux', 'ref_type': 'server_type','operating_systems':[
+                 {'key':'oracle-linux-2019', 'display_name':'Oracle Linux 2019', 'ref_type': 'os_type'}
             ]},
          ]:
               ref['_id'] = str(uuid4())

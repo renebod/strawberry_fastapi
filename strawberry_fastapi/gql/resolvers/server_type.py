@@ -33,10 +33,10 @@ def resolve_server_types() -> list[ServerType]:
     ]
 
 def resolve_server_types_db(name:str)-> list[ServerTypeDB]:
-    mango = {'selector': {'ref_type':'server_type', 'name':{'$regex': f'.*{name}.*'}},'fields':['name']}
+    mango = {'selector': {'ref_type':'server_type', 'key':{'$regex': f'.*{name}.*'}}}
 
     result = db.find(mango_query=mango)
     data =[]
     for entry in result:
-        data.append(ServerTypeDB(key='', display_name=entry['dsiplay_name'],operating_systems=[OperatingSystem(key=entry["key"], display_name=entry["dsiplay_name"])]))
+        data.append(ServerTypeDB(key=entry['key'], display_name=entry['dsiplay_name'],operating_systems=[OperatingSystem(key=entry["key"], display_name=entry["dsiplay_name"])]))
     return data 

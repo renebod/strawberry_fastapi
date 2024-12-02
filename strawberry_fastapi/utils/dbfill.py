@@ -52,39 +52,31 @@ def populate_ref_object_data(update:bool=False):
          print('Update DB')
          for ref in [
             #   Update for team entries simple
-            #   {'key':'dev', 'name': 'Development Team', 'ref_type':'team_type'},
-            #   {'key':'qa', 'name': 'QA Team', 'ref_type':'team_type'},
-            #   {'key':'ops', 'name': 'Operations Team', 'ref_type':'team_type'},
-            #   {'key':'business', 'name': 'Business Team', 'ref_type':'team_type'},
+              {'key':'dev', 'name': 'Development Team', 'ref_type':'team_type'},
+              {'key':'qa', 'name': 'QA Team', 'ref_type':'team_type'},
+              {'key':'ops', 'name': 'Operations Team', 'ref_type':'team_type'},
+              {'key':'business', 'name': 'Business Team', 'ref_type':'team_type'},
             # Update for nested entries
-            {'key': 'windows', 'display_name': 'Windows Server', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'windows-server-2012', 'display_name':'Windows Server 2012', 'ref_type': 'os_type'},
-                 {'key':'windows-server-2019', 'display_name':'Windows Server 2019', 'ref_type': 'os_type'}
-            ]},
-            {'key': 'windows', 'display_name': 'Windows Server Core', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'windows-core-server-2023', 'display_name':'Windows Core Server 2023', 'ref_type': 'os_type'},
-                 {'key':'windows-core-server-2020', 'display_name':'Windows Core Server 2020', 'ref_type': 'os_type'}
-            ]},
-            {'key': 'redhatlinux', 'display_name': 'Red Hat Linux', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'redhat-linux-enterprise-2022', 'display_name':'Red Hat Linux Enterprise 2022', 'ref_type': 'os_type'}
-            ]},
-            {'key': 'redhatlinux', 'display_name': 'Red Hat Linux', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'redhat-linux-enterprise-2020', 'display_name':'Red Hat Linux Enterprise 2020', 'ref_type': 'os_type'},
-                 {'key':'redhat-linux-enterprise-2019', 'display_name':'Red Hat Linux Enterprise 2019', 'ref_type': 'os_type'}
-            ]},
-            {'key': 'oraclelinux', 'display_name': 'Oracle Linux', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'oracle-linux-2023', 'display_name':'Oracle Linux 2023', 'ref_type': 'os_type'},
-                 {'key':'oracle-linux-2022', 'display_name':'Oracle Linux 2022', 'ref_type': 'os_type'}
-            ]},
-            {'key': 'oraclelinux', 'display_name': 'Oracle Linux', 'ref_type': 'server_type','operating_systems':[
-                 {'key':'oracle-linux-2019', 'display_name':'Oracle Linux 2019', 'ref_type': 'os_type'}
-            ]},
+            {'key': 'windows', 'display_name': 'Windows Server', 'ref_type': 'server_type'},
+            {'key':'windows-server-2012', 'display_name':'Windows Server 2012', 'ref_type': 'os_type', 'server_type':'windows'},
+            {'key':'windows-server-2019', 'display_name':'Windows Server 2019', 'ref_type': 'os_type', 'server_type':'windows'},
+            {'key': 'windows-core', 'display_name': 'Windows Server Core', 'ref_type': 'server_type'},
+            {'key':'windows-core-server-2023', 'display_name':'Windows Core Server 2023', 'ref_type': 'os_type', 'server_type':'windows-core'},
+            {'key':'windows-core-server-2020', 'display_name':'Windows Core Server 2020', 'ref_type': 'os_type', 'server_type':'windows-core'},
+            {'key': 'redhatlinux', 'display_name': 'Red Hat Linux', 'ref_type': 'server_type'},
+            {'key':'redhat-linux-enterprise-2022', 'display_name':'Red Hat Linux Enterprise 2022', 'ref_type': 'os_type', 'server_type':'redhatlinux'},
+            {'key':'redhat-linux-enterprise-2020', 'display_name':'Red Hat Linux Enterprise 2020', 'ref_type': 'os_type', 'server_type':'redhatlinux'},
+            {'key':'redhat-linux-enterprise-2019', 'display_name':'Red Hat Linux Enterprise 2019', 'ref_type': 'os_type', 'server_type':'redhatlinux'},
+            {'key': 'oraclelinux', 'display_name': 'Oracle Linux', 'ref_type': 'server_type'},
+            {'key':'oracle-linux-2023', 'display_name':'Oracle Linux 2023', 'ref_type': 'os_type','server_type': 'oraclelinux'},
+            {'key':'oracle-linux-2022', 'display_name':'Oracle Linux 2022', 'ref_type': 'os_type','server_type': 'oraclelinux'},
+            {'key':'oracle-linux-2019', 'display_name':'Oracle Linux 2019', 'ref_type': 'os_type','server_type': 'oraclelinux'},
          ]:
               ref['_id'] = str(uuid4())
               ref_db.save(ref)
 
 
 if __name__ == '__main__':
-    print('hello world')
-    # populate_ref_object_data(update=True)
+    # print('hello world')
+    populate_ref_object_data(update=True)
 

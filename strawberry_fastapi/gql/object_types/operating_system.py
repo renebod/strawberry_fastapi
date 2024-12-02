@@ -11,3 +11,4 @@ class OperatingSystemDB:
     key: str
     display_name: str
     ref_type: str
+    server_type: str

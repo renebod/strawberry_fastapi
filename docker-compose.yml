@@ -24,7 +24,7 @@ services:
       - 5984:5984
     environment:
       - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=password
+      - COUCHDB_PASSWORD=admin
       - COUCHDB_HOSTNAME=couchdb
       # Need to manuallyh create below DB's and do more things: https://github.com/apache/couchdb/issues/1354 and https://stackoverflow.com/questions/57660451/extending-couchdb-docker-image
     command: ["sh", "-c", "for elem in _users _replicator _global_changes; do curl -X PUT http://admin:password@couchdb:5984/$elem;done "]

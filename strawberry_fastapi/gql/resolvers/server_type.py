@@ -7,6 +7,7 @@ couchserver = Couch()
 db = couchserver.get_database()
  
 def resolve_server_types() -> list[ServerType]:
+    # Mocked values
     return [
         ServerType(
             key="windows",

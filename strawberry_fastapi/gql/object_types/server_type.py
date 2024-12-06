@@ -12,9 +12,10 @@ class ServerType:
 class ServerTypeDB:
     key: str
     display_name: str
-    # operating_systems : List[OperatingSystemDB]
     operating_systems= strawberry.field(resolver=resolve_operating_system_db)
-
+    
+    # Attempt to have nested fields
+    # operating_systems : List[OperatingSystemDB]   
     # @strawberry.field
     # def operating_systems(self, info: strawberry.Info):
     #     # Does not work as it still requires input of server_type

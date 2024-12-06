@@ -6,6 +6,7 @@ couchserver = Couch()
 db = couchserver.get_database()
 
 def resolve_team_type(key: str) -> TeamType:
+    # mocked values
     mock_teams = {
         "dev": TeamType(key="dev", display_name="Development Team"),
         "qa": TeamType(key="qa", display_name="QA Team"),

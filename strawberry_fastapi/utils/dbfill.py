@@ -1,4 +1,3 @@
-# import db
 import couchdb
 import os
 from uuid import uuid4
@@ -21,10 +20,8 @@ def get_database(db_name, couchserver=couchserver):
 def initalise_dbs(databases=databases, couchserver=couchserver):
     for database in databases:
             if database in couchserver:
-                # db = couchserver[database]
                 pass
             else:
-                # db = couchserver.create(database)
                 couchserver.create(database)
     return 
 
